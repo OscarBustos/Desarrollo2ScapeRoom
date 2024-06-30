@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ public class PlayerInputs : MonoBehaviour
     public Vector2 look;
     public bool jump;
     public bool sprint;
+    public bool interact;
 
     [Header("Movement Settings")]
     public bool analogMovement;
@@ -41,6 +43,12 @@ public class PlayerInputs : MonoBehaviour
     {
         SprintInput(value.isPressed);
     }
+
+    public void OnInteract(InputValue value)
+    {
+        InteractInput(value.isPressed);
+    }
+
 #endif
 
 
@@ -62,6 +70,11 @@ public class PlayerInputs : MonoBehaviour
     public void SprintInput(bool newSprintState)
     {
         sprint = newSprintState;
+    }
+
+    private void InteractInput(bool newInteractState)
+    {
+        interact = newInteractState;
     }
 
     private void OnApplicationFocus(bool hasFocus)
