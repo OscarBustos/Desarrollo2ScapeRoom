@@ -4,6 +4,7 @@ public class InputInventorySystem : PlayerSystem
 {
     [Header("References")]
     [SerializeField] private InputManagerSO inputManager;
+    [SerializeField] private GameManagerSO gameManager;
 
     #region Events
 
@@ -14,14 +15,7 @@ public class InputInventorySystem : PlayerSystem
 
     private void ScrollInventory(float scroll)
     {
-        if (scroll < 0)
-        {
-
-        }
-        else if (scroll > 0)
-        {
-
-        }
+        gameManager.UpdateItemSelected(scroll > 0 ? 1 : (scroll < 0 ? -1 : 0));
     }
 
     private void OnDisable()

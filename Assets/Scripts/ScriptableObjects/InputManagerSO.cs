@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
-[CreateAssetMenu(menuName = "InputManager")]
+[CreateAssetMenu(menuName = "Managers/InputManager")]
 public class InputManagerSO : ScriptableObject
 {
     private Controls controls;
