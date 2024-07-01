@@ -65,9 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '50
-
-'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -627,8 +625,31 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5619655556585765369}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3455563115300139473, guid: 6a2d2e5ebe29556489ce107ecda7e958,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7654982638000025671}
   m_SourcePrefab: {fileID: 100100000, guid: 6a2d2e5ebe29556489ce107ecda7e958, type: 3}
+--- !u!1 &1642571225004129531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455563115300139473, guid: 6a2d2e5ebe29556489ce107ecda7e958,
+    type: 3}
+  m_PrefabInstance: {fileID: 4125074658079673642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7654982638000025671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642571225004129531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8a0028e7690a34aa1af2082c6b09ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachPoint: {fileID: 5619655556585765369}
 --- !u!4 &2125775436051277377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2647959302561098603, guid: 6a2d2e5ebe29556489ce107ecda7e958,

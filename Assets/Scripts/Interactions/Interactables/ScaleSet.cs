@@ -30,20 +30,23 @@ public class ScaleSet : InteractableObject
 
     public override void Interact()
     {
-        if (itemAdded)
+        if (item)
         {
-            scaleAction.RemoveItem(item);
-            itemAdded = false;
-        } 
-        else
-        {
-            scaleAction.AddItem(item);
-            itemAdded = true;
-            
+            if (itemAdded)
+            {
+                scaleAction.RemoveItem(item);
+                itemAdded = false;
+            }
+            else
+            {
+                scaleAction.AddItem(item);
+                itemAdded = true;
+
+            }
+            scaleAction.Execute();
+            screenText.text = scaleAction.Result;
+            base.Interact();
         }
-        scaleAction.Execute();
-        screenText.text = scaleAction.Result;
-        base.Interact();
     }
 
     #endregion
@@ -56,4 +59,11 @@ public class ScaleSet : InteractableObject
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<IInteractable>() != null && other.gameObject == item)
+        {
+            item = null;
+        }
+    }
 }
