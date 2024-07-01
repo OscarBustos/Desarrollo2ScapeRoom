@@ -6,6 +6,8 @@ public class InputInventorySystem : PlayerSystem
     [SerializeField] private InputManagerSO inputManager;
     [SerializeField] private GameManagerSO gameManager;
 
+
+
     #region Events
 
     private void OnEnable()

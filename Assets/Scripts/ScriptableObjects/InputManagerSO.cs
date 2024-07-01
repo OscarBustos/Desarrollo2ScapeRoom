@@ -10,9 +10,8 @@ public class InputManagerSO : ScriptableObject
 {
     private Controls controls;
 
-    public event Action<Vector2> OnMove;
-    public event Action<Vector2> OnLook;
-    public event Action<bool> OnJump;
+    public event Action<Vector2> OnMove, OnLook;
+    public event Action OnJump, OnInteract;
     public event Action<float> OnScrollInventory;
 
     #region Events
@@ -35,14 +34,24 @@ public class InputManagerSO : ScriptableObject
         OnMove?.Invoke(context.ReadValue<Vector2>());
     }
 
+    private void Look(InputAction.CallbackContext context)
+    {
+        OnLook?.Invoke(context.ReadValue<Vector2>());
+    }
+
     private void Jump(InputAction.CallbackContext context)
     {
-        OnJump?.Invoke(context.ReadValueAsButton());
+        OnJump?.Invoke();
     }
 
     private void ScrollInventory(InputAction.CallbackContext context)
     {
         OnScrollInventory?.Invoke(context.ReadValue<float>());
+    }
+
+    private void Interact(InputAction.CallbackContext context)
+    {
+        OnInteract?.Invoke();
     }
 
     private void OnDisable()
@@ -69,6 +78,9 @@ public class InputManagerSO : ScriptableObject
         controls.PlayerMovement.Move.canceled += Move;
 
         controls.PlayerMovement.Jump.performed += Jump;
+
+        controls.PlayerMovement.Look.performed += Look;
+        controls.PlayerMovement.Look.canceled += Look;
     }
 
     private void DisablePlayerMovement()
@@ -77,6 +89,9 @@ public class InputManagerSO : ScriptableObject
         controls.PlayerMovement.Move.canceled -= Move;
 
         controls.PlayerMovement.Jump.performed -= Jump;
+
+        controls.PlayerMovement.Look.performed -= Look;
+        controls.PlayerMovement.Look.canceled -= Look;
     }
 
     #endregion
@@ -86,11 +101,15 @@ public class InputManagerSO : ScriptableObject
     private void EnablePlayerActions()
     {
         controls.PlayerActions.ScrollInventory.performed += ScrollInventory;
+
+        controls.PlayerActions.Interact.performed += Interact;
     }
 
     private void DisablePlayerActions()
     {
         controls.PlayerActions.ScrollInventory.performed -= ScrollInventory;
+
+        controls.PlayerActions.Interact.performed -= Interact;
     }
 
     #endregion
@@ -105,6 +124,15 @@ public class InputManagerSO : ScriptableObject
     {
         DisablePlayerMovement();
         DisablePlayerActions();
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    public void SetCursorState(bool newState)
+    {
+        Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
     }
 
     #endregion
