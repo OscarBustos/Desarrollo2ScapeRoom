@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [SerializeField, Tooltip("Distance at which the player can interact with other objects in meters")] 
+    [SerializeField, Tooltip("Distance at which the player can interact with other objects in meters")]
     private float interactDistance = 3f;
+    [SerializeField] private LayerMask interactableLayers;
 
     private PlayerInputs inputs;
     private IInteractable currentInteractable;
@@ -19,10 +20,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         CheckForInteractable();
 
-        if (currentInteractable != null && inputs.interact) 
+        if (inputs.interact)
         {
-            currentInteractable.Interact();
             inputs.interact = false;
+            currentInteractable?.Interact();
         }
     }
 
@@ -30,8 +31,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayers))
         {
+            Debug.Log("Interact recognisable");
             if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
             {
                 if (interactable.CanInteract())
