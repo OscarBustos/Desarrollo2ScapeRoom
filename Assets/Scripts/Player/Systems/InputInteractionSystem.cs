@@ -9,8 +9,7 @@ public class InputInteractionSystem : PlayerSystem
 
     [Header("Interact Settings")]
     [SerializeField, Tooltip("Distance at which the player can interact with other objects in meters")]
-    private float interactDistance = 3f;
-    [SerializeField] private LayerMask interactableLayers;
+    private float interactDistance = 5f;
 
     private IInteractable currentInteractable;
 
@@ -45,9 +44,8 @@ public class InputInteractionSystem : PlayerSystem
     {
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactableLayers))
+        if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
-            Debug.Log("Interact recognisable");
             if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
             {
                 if (interactable.CanInteract())
@@ -62,8 +60,13 @@ public class InputInteractionSystem : PlayerSystem
                         }
                     }
                 }
+                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
                 return;
             }
+        }
+        else
+        {
+            Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red);
         }
 
         currentInteractable = null;
