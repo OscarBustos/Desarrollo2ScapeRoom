@@ -19,10 +19,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         CheckForInteractable();
 
-        if (currentInteractable != null && inputs.interact) 
+        if (inputs.interact)
         {
-            currentInteractable.Interact();
             inputs.interact = false;
+            currentInteractable?.Interact();
         }
     }
 
