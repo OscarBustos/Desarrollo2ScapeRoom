@@ -52,13 +52,13 @@ public class UIManager : MonoBehaviour
     {
         interactionText.text = text;
 
-        StartCoroutine(FadeCanvasGroup(reticleCanvasGroup, 1f));
+        if (!alwaysShowReticle) StartCoroutine(FadeCanvasGroup(reticleCanvasGroup, 1f));
         StartCoroutine(FadeCanvasGroup(interactionPanelCanvasGroup, 1f));
     }
 
     private void HideInteraction()
     {
-        StartCoroutine(FadeCanvasGroup(reticleCanvasGroup, 0f));
+        if (!alwaysShowReticle) StartCoroutine(FadeCanvasGroup(reticleCanvasGroup, 0f));
         StartCoroutine(FadeCanvasGroup(interactionPanelCanvasGroup, 0f));
     }
 
