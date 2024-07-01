@@ -69,7 +69,7 @@ public class InputInteractionSystem : PlayerSystem
             Debug.DrawRay(ray.origin, ray.direction * interactDistance, Color.red);
         }
 
+        if (currentInteractable != null) EventManager.HideInteraction();
         currentInteractable = null;
-        EventManager.HideInteraction();
     }
 }
