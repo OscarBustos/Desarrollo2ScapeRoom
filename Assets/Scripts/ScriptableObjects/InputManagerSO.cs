@@ -1,9 +1,6 @@
 using System;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 [CreateAssetMenu(menuName = "Managers/InputManager")]
 public class InputManagerSO : ScriptableObject
