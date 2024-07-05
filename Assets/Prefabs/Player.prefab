@@ -206,8 +206,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1208891194779337584}
   - {fileID: 196619282659568406}
@@ -323,9 +323,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 11400000, guid: d7536daa73b9c734f8ea58472a43002a, type: 2}
   interactDistance: 3
-  interactableLayers:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &1709480093379926082
 MonoBehaviour:
   m_ObjectHideFlags: 0
