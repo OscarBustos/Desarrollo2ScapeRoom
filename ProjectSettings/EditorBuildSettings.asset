@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FinalScenes/Morgue.unity
     guid: 4f2fa07279b9e234b825b8ac8adb67d6
   - enabled: 0
-    path: Assets/TO_DELETE/Morgue Room PBR/morgue scene/morgue.unity
+    path: Assets/TO_DELETE/00_CorridorAssets/Morgue Room PBR/morgue scene/morgue.unity
     guid: 845128cf95f90184697fffb609346de8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
